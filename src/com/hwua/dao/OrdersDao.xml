@@ -1,29 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hwua.dao.CarDao">
-    <!--查询全部商品-->
-    <select id="selectCarByUserAndGoods" resultType="car" parameterType="car">
-        select * from sy_car where user_id=#{user_id} and goods_id=#{goods_id}
-    </select>
-    <!--添加商品信息-->
-    <insert id="insertCar" parameterType="car">
-        insert into sy_car values (null,#{user_id},#{goods_id},#{counts})
+    <!--添加记录表-->
+    <insert id="insertOrders" parameterType="orders">
+        insert into sy_orders values (null,#{user_id},#{createDate},#{code},#{total},#{status},#{address_id})
     </insert>
-    <!--更新-->
-    <update id="updateCar" parameterType="car">
-        update sy_car set counts=counts+#{counts} where user_id=#{user_id} and goods_id=#{goods_id};
-    </update>
-    <!--查询多条记录-->
-    <select id="selectCarByUserId" resultType="map" parameterType="int">
-        SELECT c.*,g.* FROM sy_car c LEFT JOIN sy_goods g ON g.goods_id=c.goods_id WHERE c.user_id=#{user_id}
-    </select>
-    <!--更新购物车-->
-    <update id="updateCarCounts" parameterType="car" >
-        update sy_car set counts=#{counts} where car_id=#{car_id}
-    </update>
-    <!--删除商品-->
-    <delete id="deleteCar" parameterType="int">
-        delete from sy_car where car_id=#{car_id}
-    </delete>
+    <!--添加记录明细表-->
+    <insert id="insertOrdersDetail" parameterType="ordersDetail">
+        insert into sy_orderdetail values (null,#{orders_id},#{goods_id},#{goods_price},#{counts})
+    </insert>
 
 </mapper>
