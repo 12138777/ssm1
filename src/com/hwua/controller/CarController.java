@@ -52,7 +52,6 @@ public class CarController {
     @RequestMapping(value = "/updateCarCount")
     @ResponseBody
     public String add(int car_id, int counts) {
-        System.out.println("-----------------------" + car_id + counts);
         Car car = new Car(car_id, null, null, counts);
         int i = carService.updateCarCounts(car);
         JSONObject obj = new JSONObject();

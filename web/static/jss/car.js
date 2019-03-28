@@ -120,21 +120,17 @@ function jiesuan() {
     var prices = [];
     var carids=[];
     console.log(total);
-    console.log(goodids);
-    console.log(counts);
-    console.log(prices);
-    console.log(carids);
     $(".item:checked").each(function () {
-        goodids.push($(this).parent().parent().find(".goodid").val());
-        counts.push($(this).parent().parent().find(".count").val());
-        prices.push($(this).parent().parent().find(".price").text());
+        goodids.push($(this).parent().parent().parent().parent().find(".goodid").val());
+        counts.push($(this).parent().parent().parent().parent().find(".count").val());
+        prices.push($(this).parent().parent().parent().parent().find(".price").text());
         carids.push($(this).parent().parent().find(".carid").val());
     })
     console.log(goodids);
     console.log(counts);
     console.log(prices);
     $.ajax({
-        url: path + "/process/order?action=add",
+        url: path + "/orders/addorders",
         data: {
             total: total,
             goodids: goodids,

@@ -19,6 +19,7 @@ public class GoodsController {
 
     @Autowired
     GoodsService goodsService;
+
     @RequestMapping(value = "/getGoods",produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String selectAllGoods(){
@@ -26,9 +27,8 @@ public class GoodsController {
         String s = JSONObject.toJSONString(goods);
         return s;
     }
+
     @RequestMapping(value = "detail")
-
-
     public ModelAndView selectGoodsById(HttpServletRequest req){
         String s=req.getParameter("goods_id");
         int goods_id = Integer.parseInt(s);

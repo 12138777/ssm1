@@ -91,7 +91,7 @@
                             </div>
                         </li>
                         <li class="th th-price">
-                            <span class="th-su" title="price">${cars.goods_price}</span>
+                            <span class="th-su price" title="price">${cars.goods_price}</span>
                         </li>
                         <li class="th th-amount">
                             <div class="box-btn layui-clear">
